@@ -17,7 +17,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetAboutQueryResult>> Handle()
+        public async Task<List<GetAboutQueryResult>> Handle()       // burada fonksiyonun dönüş değeri GetAboutQueryResult tipinde olucak fakat List olucak dedik.
         {
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetAboutQueryResult
