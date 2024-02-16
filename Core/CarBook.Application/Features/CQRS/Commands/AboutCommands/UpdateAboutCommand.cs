@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.CQRS.Commands
+namespace CarBook.Application.Features.CQRS.Commands.AboutCommands
 {
-    public class CreateAboutCommand
+    public class UpdateAboutCommand
     {
-        // abaoutId'i sildik çünkü gerek yok kullanmayacağız. 
-        public string Title { get; set; }  
+        public int AboutID { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
     }
