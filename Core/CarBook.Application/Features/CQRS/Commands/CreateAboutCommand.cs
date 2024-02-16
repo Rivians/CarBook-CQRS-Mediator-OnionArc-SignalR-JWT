@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.CQRS.Commands
 {
-    public class CreateAbaoutCommand
+    public class CreateAboutCommand
     {
         // abaoutId'i sildik çünkü gerek yok kullanmayacağız. 
         public string Title { get; set; }  

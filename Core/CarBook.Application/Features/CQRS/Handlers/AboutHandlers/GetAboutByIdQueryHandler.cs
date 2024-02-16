@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
 {
-    public class GetAboutByIdQueryHander
+    public class GetAboutByIdQueryHandler
     {
         private readonly IRepository<About> _repository;
-        public GetAboutByIdQueryHander(IRepository<About> repository)
+        public GetAboutByIdQueryHandler(IRepository<About> repository)
         {
             _repository = repository;
         }

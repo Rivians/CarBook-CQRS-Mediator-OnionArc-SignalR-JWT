@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
 {
-    public class UpdateAboutCommandHandle
+    public class UpdateAboutCommandHandler
     {
         private readonly IRepository<About> _repository;
-        public UpdateAboutCommandHandle(IRepository<About> repository)
+        public UpdateAboutCommandHandler(IRepository<About> repository)
         {
             _repository = repository;
         }
