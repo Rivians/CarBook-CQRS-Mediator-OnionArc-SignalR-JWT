@@ -13,14 +13,16 @@ namespace CarBook.WepApi.Controllers
         private readonly CreateCarCommandHandler _createCarCommandHandler;
         private readonly GetCarByIdQueryHandler _getCarByIdQueryHandler;
         private readonly GetCarQueryHandler _getCarQueryHandler;
+        private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
 
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler)
+        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
             _getCarQueryHandler = getCarQueryHandler;
+            _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _removeCarCommandHandler = removeCarCommandHandler;
             _updateCarCommandHandler = updateCarCommandHandler;
         }
@@ -58,6 +60,13 @@ namespace CarBook.WepApi.Controllers
         {
             await _updateCarCommandHandler.Handle(command);
             return Ok("Car başarıyla güncellendi");
+        }
+
+        [HttpGet("GetCarWithBrand")]
+        public IActionResult GetCarWithBrand()
+        {
+            var values =  _getCarWithBrandQueryHandler.Handle();
+            return Ok(values);
         }
     }
 }
