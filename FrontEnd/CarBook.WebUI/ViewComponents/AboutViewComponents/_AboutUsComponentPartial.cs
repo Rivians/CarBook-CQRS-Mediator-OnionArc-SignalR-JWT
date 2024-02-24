@@ -19,20 +19,14 @@ namespace CarBook.WebUI.ViewComponents.AboutViewComponents
 
             if (responseMessage.IsSuccessStatusCode)
             {
+                // HTTP cevabının içeriğini asenkron bir şekilde okur ve sonucunu Task<string> olarak döndürür. Bu görevin sonucu, cevabın içeriğidir ve bir dize olarak temsil edilir.
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
+
+                // Bu satırın genel amacı, HTTP cevabının içeriğini temsil eden jsonData string'ini, ResultAboutDto türündeki nesnelerin bir listesine dönüştürmektir. 
+                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData); 
                 return View(values);
             }
             return View();            
-
-            /*
-                
-                
-                
-                
-                
-            */
-
         }
     }
 }

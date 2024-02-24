@@ -1,4 +1,4 @@
-﻿using CarBook.Application.Features.Mediator.Commands.LocationCommands;
+﻿using CarBook.Application.Features.Mediator.Commands.PricingCommands;
 using CarBook.Application.Interfaces;
 using CarBook.Domain.Entities;
 using MediatR;
@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.Mediator.Handlers.LocationHandlers
+namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
 {
-    public class RemovePricingCommandHandler : IRequestHandler<RemoveLocationCommand>
+    public class RemovePricingCommandHandler : IRequestHandler<RemovePricingCommand>
     {
-        private readonly IRepository<Location> _repository;
-        public RemovePricingCommandHandler(IRepository<Location> repository)
+        private readonly IRepository<Pricing> _repository;
+        public RemovePricingCommandHandler(IRepository<Pricing> repository)
         {
             _repository = repository;
         }
 
-        public async Task Handle(RemoveLocationCommand request, CancellationToken cancellationToken)
+        public async Task Handle(RemovePricingCommand request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
             await _repository.RemoveAsync(value);
