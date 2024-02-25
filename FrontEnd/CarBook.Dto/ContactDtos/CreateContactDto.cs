@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.CQRS.Commands.ContactCommands
+namespace CarBook.Dto.ContactDtos
 {
-    public class CreateContactCommand
+    public class CreateContactDto
     {
+        public int ContactID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Subject { get; set; }

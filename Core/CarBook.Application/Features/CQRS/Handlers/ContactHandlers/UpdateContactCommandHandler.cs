@@ -25,6 +25,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
             value.Message = command.Message;
             value.Subject = command.Subject;    
             value.Name = command.Name;
+            value.SendDate = command.SendDate;
             await _repository.UpdateAsync(value);
         }
     }

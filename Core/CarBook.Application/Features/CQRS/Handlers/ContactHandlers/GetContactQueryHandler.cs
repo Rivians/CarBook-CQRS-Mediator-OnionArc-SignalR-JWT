@@ -26,7 +26,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
                 Email = x.Email,
                 Message = x.Message,
                 Name = x.Name,
-                Subject = x.Subject
+                Subject = x.Subject,
+                SendDate = x.SendDate
             }).ToList();
         }
     }
