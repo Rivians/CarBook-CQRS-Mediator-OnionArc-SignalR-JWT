@@ -8,10 +8,10 @@ namespace CarBook.WepApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceController : ControllerBase
+    public class ServicesController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ServiceController(IMediator mediator)
+        public ServicesController(IMediator mediator)
         {
             _mediator = mediator;
         }
