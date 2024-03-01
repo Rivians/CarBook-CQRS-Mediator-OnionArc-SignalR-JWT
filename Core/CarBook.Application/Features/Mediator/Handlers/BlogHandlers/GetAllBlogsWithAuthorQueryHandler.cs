@@ -29,7 +29,8 @@ namespace CarBook.Application.Features.Mediator.Handlers.BlogHandlers
                 CategoryID = x.CategoryID,
                 CoverImageUrl = x.CoverImageUrl,
                 CreatedTime = x.CreatedTime,
-                Title = x.Title
+                Title = x.Title,
+                Description = x.Description
             }).ToList();
         }
     }
