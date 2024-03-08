@@ -20,8 +20,7 @@ namespace CarBook.Persistence.Repositories.TagCloudRepositories
         public List<TagCloud> GetTagCloudsByBlogID(int id)
         {
             var values = _context.TagClouds.Where(x => x.BlogID == id).ToList();
-            return values;
-            s
+            return values;            
         }
     }
 }
