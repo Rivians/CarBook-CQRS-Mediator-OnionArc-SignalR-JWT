@@ -25,7 +25,14 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public List<Comment> GetAll()
         {
-            return _context.Comments.ToList();
+            return _context.Comments.Select(x => new Comment
+            {
+                CommentId = x.CommentId,
+                Name = x.Name,
+                Description = x.Description,
+                CreatedDate = x.CreatedDate,
+                BlogId = x.BlogId
+            }).ToList();
         }
 
         public Comment GetById(int id)
@@ -35,6 +42,7 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public void Remove(Comment entity)
         {
+            //var value = _context.Comments.Find(entity.CommentId);  BU SATIRA GEREK YOK , MURAT HOCANIN KODU..
             _context.Remove(entity);
             _context.SaveChanges();
         }
