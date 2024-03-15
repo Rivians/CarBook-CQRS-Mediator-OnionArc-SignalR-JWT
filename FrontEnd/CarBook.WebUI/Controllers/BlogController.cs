@@ -24,7 +24,7 @@ namespace CarBook.WebUI.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultAllBlogsWithAuthorDto>>(jsonData);
                 return View(values);
-            }s
+            }
             return View();
         }
 
