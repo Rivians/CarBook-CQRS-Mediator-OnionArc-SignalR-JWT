@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CreateCarDto
+
+@{
 	ViewData["Title"] = "CraeteCar";
 	Layout = "~/Views/AdminLayout/Index.cshtml";
 }
@@ -16,6 +18,7 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">Marka</label>
 								DropDown
+								@Html.DropDownListFor(x => x.BrandID, (List<SelectListItem>)ViewBag.BrandValues, new{@class="form-control"})
 								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 							</div>
 							<div class="form-group">
