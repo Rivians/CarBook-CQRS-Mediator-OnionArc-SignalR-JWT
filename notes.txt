@@ -18,5 +18,3 @@ Yukarıda bahsedilen kod örneğinde, RegisterServicesFromAssembly metodu, belir
 Bir .NET uygulaması, bir veya birden fazla assembly içerebilir. Ayrıca, bir projenin derlenmesi sonucunda oluşturulan DLL veya EXE dosyaları da assembly olarak adlandırılır.
 
 ----------------------------------------------------------------------------------------------------------------------------
-
-	

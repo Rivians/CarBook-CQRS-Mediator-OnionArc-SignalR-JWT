@@ -50,10 +50,10 @@ namespace CarBook.WepApi.Controllers
             return Ok("Car başarıyla eklendi");
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteCar(RemoveCarCommand command)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveCar(int id)
         {
-            await _removeCarCommandHandler.Handle(new RemoveCarCommand(command.Id));
+            await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
             return Ok("Car başarıyla silindi");
         }
 
