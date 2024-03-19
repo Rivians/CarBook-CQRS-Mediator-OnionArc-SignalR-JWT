@@ -47,10 +47,10 @@ namespace CarBook.WepApi.Controllers
             return Ok("Brand başarıyla eklendi");
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteBrand(RemoveBrandCommand command)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBrand(int id)
         {
-            await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(command.Id));
+            await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(id));
             return Ok("Brand başarıyla silindi");
         }
 
