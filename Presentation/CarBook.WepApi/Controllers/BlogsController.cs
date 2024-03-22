@@ -38,7 +38,7 @@ namespace CarBook.WepApi.Controllers
             return Ok("Lokasyon eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveBlog(int id)
         {
             await _mediator.Send(new RemoveBlogCommand(id));

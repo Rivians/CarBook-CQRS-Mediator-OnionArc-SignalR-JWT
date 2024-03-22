@@ -46,7 +46,7 @@ namespace CarBook.WepApi.Controllers
             return Ok("Contact başarıyla eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveContact(int id)
         {
             await _removeContactCommandHandler.Handle(new RemoveContactCommand(id));

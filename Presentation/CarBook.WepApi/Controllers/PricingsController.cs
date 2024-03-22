@@ -37,7 +37,7 @@ namespace CarBook.WepApi.Controllers
             return Ok("Pricing eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));
