@@ -1,0 +1,41 @@
+﻿@model UpdateFooterAddressDto
+
+@{
+    ViewData["Title"] = "UpdateFooterAddress";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Adres Bilgisi Güncelleme Sayfası</h4>
+						<p class="card-subtitle mb-4">Adres alanına ait bilgileri aşağıdaki panelden yapabilirsiniz. Tema bütünlüğünün bozulmaması adına lütfen sadece 1 tane veri girişi yapınız.</p>
+						<form method="post">
+							<input type="hidden" asp-for="FooterAddressID" />
+							<div class="form-group">
+								<label for="exampleInputAddress">Adres</label>
+								<input type="text" class="form-control" asp-for="Address" id="exampleInputAddress" placeholder="Adresi Giriniz">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputDescription">Açıklama</label>
+								<input type="text" class="form-control" asp-for="Description" id="exampleInputDescription" placeholder="Açıklamayı Giriniz">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPhone">Telefon Numarası</label>
+								<input type="text" class="form-control" asp-for="Phone" id="exampleInputPhone" placeholder="Telefon Numrasını Giriniz">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail">Email Adresi</label>
+								<input type="text" class="form-control" asp-for="Email" id="exampleInputEmail" placeholder="Email Adresini Giriniz">
+							</div>
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Adresi Güncelle</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
