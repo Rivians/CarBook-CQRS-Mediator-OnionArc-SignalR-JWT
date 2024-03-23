@@ -10,7 +10,6 @@ namespace CarBook.Application.Features.Mediator.Queries.PricingQueries
 {
     public class GetPricingQuery : IRequest<List<GetPricingQueryResult>>
     {
-        public int PricingID { get; set; }
-        public string Name { get; set; }
+
     }
 }
