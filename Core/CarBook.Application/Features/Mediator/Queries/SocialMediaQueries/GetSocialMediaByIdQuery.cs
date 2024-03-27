@@ -10,9 +10,10 @@ namespace CarBook.Application.Features.Mediator.Queries.SocialMediaQueries
 {
     public class GetSocialMediaByIdQuery : IRequest<GetSocialMediaByIdQueryResult>
     {
-        public int SocialMediaID { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public string Icon { get; set; }
-    }
+        public int Id { get; set; }
+		public GetSocialMediaByIdQuery(int id)
+		{
+			Id = id;
+		}
+	}
 }
