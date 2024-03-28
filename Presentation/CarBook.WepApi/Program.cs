@@ -9,6 +9,7 @@ using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Application.Interfaces.TagCloudInterfaces;
 using CarBook.Application.Services;
 using CarBook.Persistence.Context;
@@ -17,6 +18,7 @@ using CarBook.Persistence.Repositories.BlogRepositories;
 using CarBook.Persistence.Repositories.CarPricingRepositories;
 using CarBook.Persistence.Repositories.CarRepositories;
 using CarBook.Persistence.Repositories.CommentRepositories;
+using CarBook.Persistence.Repositories.StatisticRepositories;
 using CarBook.Persistence.Repositories.TagCloudRepositories;
 using CreateBannerCommandHandler = CarBook.Application.Features.CQRS.Handlers.BannerHandlers.CreateBannerCommandHandler;
 
@@ -27,6 +29,7 @@ builder.Services.AddScoped<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));   //  IRepository tipi istendiðinde Repository tipinde bir örnek döndürülecektir.
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository)); //  ICarRepository tipi istendiðinde CarRepository tipinde bir örnek döndürülecektir.
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
+builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository)); 
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));  // garip pattern

@@ -50,7 +50,7 @@ namespace CarBook.Persistence.Repositories.StatisticRepositories
             return value;
         }
 
-        public string GetBlogTitleByMaxBlogComment()
+        public string GetBlogTitleByMaxBlogComment()    // xx
         {
             throw new NotImplementedException();
         }
@@ -61,17 +61,17 @@ namespace CarBook.Persistence.Repositories.StatisticRepositories
             return value;
         }
 
-        public string GetBrandNameByMaxCar()
+        public string GetBrandNameByMaxCar()    // xx
         {
             throw new NotImplementedException();
         }
 
-        public string GetCarBrandAndModelByRentPriceDailyMax()
+        public string GetCarBrandAndModelByRentPriceDailyMax()  // xx
         {
             throw new NotImplementedException();
         }
 
-        public string GetCarBrandAndModelByRentPriceDailyMin()
+        public string GetCarBrandAndModelByRentPriceDailyMin()  // xx
         {
             throw new NotImplementedException();
         }
