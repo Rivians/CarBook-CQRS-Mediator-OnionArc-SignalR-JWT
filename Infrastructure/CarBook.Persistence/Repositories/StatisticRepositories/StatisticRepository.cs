@@ -1,5 +1,6 @@
 ﻿using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,17 +64,33 @@ namespace CarBook.Persistence.Repositories.StatisticRepositories
 
         public string GetBrandNameByMaxCar()    // xx
         {
-            throw new NotImplementedException();
+            var value = _context.Cars.GroupBy(x => x.BrandID).
+                            Select(y => new
+                            {
+                                BrandID = y.Key,
+                                Count = y.Count()
+                            }).OrderByDescending(z => z.Count).Take(1).FirstOrDefault();
+            string brand = _context.Brands.Where(x => x.BrandID == value.BrandID).Select(y => y.Name).FirstOrDefault();
+
+            return brand;
         }
 
-        public string GetCarBrandAndModelByRentPriceDailyMax()  // xx
+        public string GetCarBrandAndModelByRentPriceDailyMax()  
         {
-            throw new NotImplementedException();
+            int pricingId = _context.Pricings.Where(x => x.Name == "Günlük").Select(y => y.PricingID).FirstOrDefault();
+            decimal amount = _context.CarPricings.Where(x => x.PricingID == pricingId).Max(y => y.Amount);
+            int carId = _context.CarPricings.Where(x => x.Amount == amount).Select(y => y.CarID).FirstOrDefault();
+            string carBrandModel = _context.Cars.Where(x => x.CarID == carId).Include(y => y.Brand).Select(z => z.Brand.Name + " " + z.Model).FirstOrDefault();
+            return carBrandModel;
         }
 
-        public string GetCarBrandAndModelByRentPriceDailyMin()  // xx
+        public string GetCarBrandAndModelByRentPriceDailyMin()  
         {
-            throw new NotImplementedException();
+            int pricingId = _context.Pricings.Where(x => x.Name == "Günlük").Select(y => y.PricingID).FirstOrDefault();
+            decimal amount = _context.CarPricings.Where(x => x.PricingID == pricingId).Min(y => y.Amount);
+            int carId = _context.CarPricings.Where(x => x.Amount == amount).Select(y => y.CarID).FirstOrDefault();
+            string carBrandModel = _context.Cars.Where(x => x.CarID == carId).Include(y => y.Brand).Select(z => z.Brand.Name + " " + z.Model).FirstOrDefault();
+            return carBrandModel;
         }
 
         public int GetCarCount()
