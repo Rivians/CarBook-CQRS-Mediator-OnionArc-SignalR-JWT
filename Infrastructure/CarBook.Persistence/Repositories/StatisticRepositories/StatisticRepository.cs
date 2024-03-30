@@ -51,9 +51,16 @@ namespace CarBook.Persistence.Repositories.StatisticRepositories
             return value;
         }
 
-        public string GetBlogTitleByMaxBlogComment()    // xx
+        public string GetBlogTitleByMaxBlogComment()
         {
-            throw new NotImplementedException();
+            var values = _context.Comments.GroupBy(x => x.BlogId).
+                            Select(y => new
+                            {
+                                BlogId = y.Key,
+                                Count = y.Count()
+                            }).Take(1).FirstOrDefault();
+            string blogName = _context.Blogs.Where(x => x.BlogId == values.BlogId).Select(y => y.Title).FirstOrDefault();
+            return blogName;
         }
 
         public int GetBrandCount()
@@ -62,7 +69,7 @@ namespace CarBook.Persistence.Repositories.StatisticRepositories
             return value;
         }
 
-        public string GetBrandNameByMaxCar()    // xx
+        public string GetBrandNameByMaxCar()    //          !!!!!!!!!!!!!!!!!!!!!!!!!! 
         {
             var value = _context.Cars.GroupBy(x => x.BrandID).
                             Select(y => new

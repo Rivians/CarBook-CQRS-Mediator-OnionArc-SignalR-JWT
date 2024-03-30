@@ -27,8 +27,8 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             ViewBag.avgWeeklyPrice = GetApiResult<AvgRentPriceForWeeklyDto>("GetAvgRentPriceForWeekly").Result.AvgRentPriceForWeekly;
             ViewBag.avgMonthlyPrice = GetApiResult<AvgRentPriceForMonthlyDto>("GetAvgRentPriceForMonthly").Result.AvgRentPriceForMonthly;
             ViewBag.autoCarCount = GetApiResult<ResultCarCountTransmissionIsAutoDto>("GetCarCountByTransmissionIsAuto").Result.CarCountByTransmissionIsAuto;
-          ViewBag.brandNameByMaxCar = GetApiResult<ResultBrandNameByMaxCarDto>("GetBrandNameByMaxCar").Result.BrandNameByMaxCar;
-        //  ViewBag.blogTitleByMaxBlogComment = GetApiResult<ResultBlogTitleByMaxBlogCommentDto>("GetBlogTitleByMaxBlogComment").Result.BlogTitleByMaxBlogComment;
+            ViewBag.brandNameByMaxCar = GetApiResult<ResultBrandNameByMaxCarDto>("GetBrandNameByMaxCar").Result.BrandNameByMaxCar;
+            ViewBag.blogTitleByMaxBlogComment = GetApiResult<ResultBlogTitleByMaxBlogCommentDto>("GetBlogTitleByMaxBlogComment").Result.BlogTitleByMaxBlogComment;
             ViewBag.carCountSmallerThan1000 = GetApiResult<ResultCarCountByKmSmallerThan1000Dto>("GetCarCountByKmSmallerThan1000").Result.CarCountByKmSmallerThan1000;
             ViewBag.carByGasolineOrDiesel = GetApiResult<ResultCarCountByFuelGasolineOrDieselDto>("GetCarCountByFuelGasolineOrDiesel").Result.CarCountByFuelGasolineOrDiesel;
             ViewBag.carElectricCount = GetApiResult<ResultCarCountByFuelElectricDto>("GetCarCountByFuelElectric").Result.CarCountByFuelElectric;
