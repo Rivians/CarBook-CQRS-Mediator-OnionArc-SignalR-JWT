@@ -18,6 +18,7 @@ namespace CarBook.Domain.Entities
         public int Age { get; set; }
         public int DriverLicenseYear { get; set; }
         public string? Description { get; set; }
+        public string Status { get; set; }  // rezerasyon alındı vs..
         public int? PickUpLocationID { get; set; }
         public int? DropOffLocationID { get; set; }
         public Location PickUpLocation { get; set; }

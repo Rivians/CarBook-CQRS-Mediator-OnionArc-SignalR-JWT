@@ -24,6 +24,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarPricingHandlers
             var values = _repository.GetCarPricingWithCars();
             return values.Select(x => new GetCarPricingWithCarQueryResult
             {
+                CarId = x.CarID,
                 CarPricingId = x.CarPricingID,
                 Brand = x.Car.Brand.Name,
                 Model = x.Car.Model,
