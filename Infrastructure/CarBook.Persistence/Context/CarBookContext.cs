@@ -36,5 +36,22 @@ namespace CarBook.Persistence.Context
         public DbSet<TagCloud> TagClouds { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<RentACar> RentACars { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Amaç : Reservation tablosundaki PickUpLocationID ve DropOffLocationID'leri Location tablosundaki tek bir ID ile eşleştirmek. 
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.PickUpLocation)              // 1 olan kısım
+                .WithMany(y => y.PickUpReservation)         // N olan kısım
+                .HasForeignKey(z => z.PickUpLocationID)     // ilişkilendirilecek olan kısım
+                .OnDelete(DeleteBehavior.ClientSetNull);    // silindiğinde hata vermemesi için null'a eşitleyip öyle sil diyoruz
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.DropOffLocation)
+                .WithMany(y => y.DropOffReservation)
+                .HasForeignKey(z => z.DropOffLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        }
     }
 }
