@@ -1,4 +1,5 @@
-﻿
+﻿@model CarBook.Dto.LocationDtos.ResultLocationDto
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -8,29 +9,39 @@
     <form class="bg-light p-5 contact-form" method="post">
         <div class="form-group">
             <input type="text" class="form-control" readonly placeholder="Almak İstediğiniz Araba">
-        </div>
+        </div>        
         <div class="form-group">
+            <label>Adınız</label>
             <input type="text" class="form-control" placeholder="Adınız">
         </div>
         <div class="form-group">
+            <label>Soyadınız</label>
             <input type="text" class="form-control" placeholder="Soyadınız">
         </div>
         <div class="form-group">
+            <label>Email</label>
             <input type="email" class="form-control" placeholder="Mail Adresiniz">
         </div>
         <div class="form-group">
+            <label>Telefon</label>
             <input type="email" class="form-control" placeholder="Telefon Numaranız">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" placeholder="Almak İstediğiniz Lokasyon">
+            <label>Alınmak İstenen Lokasyon</label>
+            <select asp-for="LocationId" asp-items="ViewBag.v" class="form-control"></select>
+            @* <input type="email" class="form-control" placeholder="Almak İstediğiniz Lokasyon"> *@
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" placeholder="Teslim Etmek İstediğiniz Lokasyon">
-        </div>
+            <label>İade Edilecek Lokasyon</label>
+            <select asp-for="LocationId" asp-items="ViewBag.v" class="form-control"></select>
+         @* <input type="email" class="form-control" placeholder="Teslim Etmek İstediğiniz Lokasyon"> *@
+         </div>
         <div class="form-group">
+            <label>Yaşınız</label>
             <input type="text" class="form-control" placeholder="Yaşınız">
         </div>
         <div class="form-group">
+            <label>Ehliyet Yılınız</label>
             <input type="text" class="form-control" placeholder="Ehliyet Yılınız">
         </div>
         <div class="form-group">
