@@ -15,20 +15,12 @@ namespace CarBook.WebUI.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            var bookPickDate = TempData["bookPickDate"];
-            var bookOffDate = TempData["bookOffDate"];
-            var timePick = TempData["timePick"];
-            var timeOff = TempData["timeOff"];
             var locationID = TempData["locationID"];
 
             //filterRentACarDto.LocationID = int.Parse(locationID.ToString());
             //filterRentACarDto.Available = true;
             id = int.Parse(locationID.ToString());
 
-            ViewBag.bookPickDate = bookPickDate;
-            ViewBag.bookOffDate = bookOffDate;
-            ViewBag.timePick = timePick;
-            ViewBag.timeOff = timeOff;
             ViewBag.locationID = locationID;
 
             var client = _httpClientFactory.CreateClient();
