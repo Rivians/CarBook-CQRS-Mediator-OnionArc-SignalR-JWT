@@ -1,4 +1,5 @@
 ﻿using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.ViewModels;
 using CarBook.Domain.Entities;
 using CarBook.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -23,5 +24,15 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
             var values = _context.CarPricings.Include(x => x.Car).ThenInclude(y => y.Brand).Include(x => x.Pricing).Where(z => z.PricingID == 2).ToList();
             return values;
         }
-    }
+
+		public List<CarPricing> GetCarPricingWithTimePeriod()
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<CarPricingViewModel> GetCarPricingWithTimePeriod1()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
