@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Queries.CarPricingQueries
 {
-	public class GetCarPricingWithTimePeriodQuery : IRequest<List<GetCarPricingWithCarQueryResult>>
+	public class GetCarPricingWithTimePeriodQuery : IRequest<List<GetCarPricingWithTimePeriodQueryResult>>
 	{
 	}
 }
