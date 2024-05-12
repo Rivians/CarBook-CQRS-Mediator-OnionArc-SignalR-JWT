@@ -28,7 +28,5 @@ namespace CarBook.WepApi.Controllers
 			var values = await _mediator.Send(new GetCarPricingWithTimePeriodQuery());
 			return Ok(values);
 		}
-
-
 	}
 }
