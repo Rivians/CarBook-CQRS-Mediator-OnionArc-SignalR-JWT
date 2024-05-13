@@ -58,5 +58,13 @@ namespace CarBook.WepApi.Controllers
 			return Ok(value);
 		}
 
-	}
+        [HttpGet("CommentCountByBlog")]
+        public IActionResult CommentCountByBlog(int id)
+        {
+            var value = _commentRepository.GetCommentCountByBlog(id);
+            return Ok(value);
+        }
+
+
+    }
 }
