@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Dto.CommentDtos
 {
-    public class CreateComment
+    public class CreateCommentDto
     {
     }
 }
