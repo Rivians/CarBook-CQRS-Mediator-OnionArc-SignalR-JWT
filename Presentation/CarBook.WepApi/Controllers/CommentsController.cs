@@ -69,7 +69,7 @@ namespace CarBook.WepApi.Controllers
             return Ok(value);
         }
 
-        [HttpPost("CraeteCommentWithMediator")]
+        [HttpPost("CreateCommentWithMediator")]
         public async Task<IActionResult> CraeteCommentWithMediator(CreateCommentCommand command)
         {
             await _mediator.Send(command);

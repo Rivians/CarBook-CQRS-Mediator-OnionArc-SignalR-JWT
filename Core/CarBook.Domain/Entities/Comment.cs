@@ -11,6 +11,7 @@ namespace CarBook.Domain.Entities
         public int CommentId { get; set; }
         public string Name { get; set; }        // user name
         public string Description { get; set; }  // comment
+        public string Email { get; set; }  
         public DateTime CreatedDate { get; set; }
         public int BlogId { get; set; }
         public Blog Blog { get; set; }

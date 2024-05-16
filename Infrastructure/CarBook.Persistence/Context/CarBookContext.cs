@@ -13,6 +13,9 @@ namespace CarBook.Persistence.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-J0UOEGM\\SQLEXPRESS; initial Catalog=CarBookDb; integrated Security=true; TrustServerCertificate=true");
+
+            // OHHVBJO
+            // J0UOEGM
         }
 
         public DbSet<About> Abouts { get; set; }
