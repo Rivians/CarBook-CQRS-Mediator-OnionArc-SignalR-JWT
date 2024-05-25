@@ -48,9 +48,9 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
                             CoverImageUrl = reader["CoverImageUrl"].ToString(),
                             Amounts = new List<decimal>
                             {
-                                Convert.ToDecimal(reader[1]),
-                                Convert.ToDecimal(reader[2]),
-                                Convert.ToDecimal(reader[3])
+                                Convert.ToDecimal(reader["1"]),
+                                Convert.ToDecimal(reader["2"]),
+                                Convert.ToDecimal(reader["3"])
                             }
                         };
                         values.Add(carPricingViewModel);
