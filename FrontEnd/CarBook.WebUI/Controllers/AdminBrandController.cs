@@ -33,7 +33,7 @@ namespace CarBook.WebUI.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
+		public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)   /*CreateBrandDto createBrandDto*/
 		{
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(createBrandDto);

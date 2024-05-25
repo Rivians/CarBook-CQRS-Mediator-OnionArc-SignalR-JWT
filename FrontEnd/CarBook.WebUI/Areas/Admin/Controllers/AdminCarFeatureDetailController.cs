@@ -1,7 +1,9 @@
 ﻿using CarBook.Dto.BlogDtos;
 using CarBook.Dto.CarFeatureDtos;
+using CarBook.Dto.FeatureDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace CarBook.WebUI.Areas.Admin.Controllers
 {
@@ -47,8 +49,40 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 				}
 			}
 			return RedirectToAction("Index", "AdminCar");
-			//return View();
 		}
+
+		[HttpGet]
+		[Route("CreateFeatureByCarId")]
+		public async Task<IActionResult> CreateFeatureByCarId()
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync("https://localhost:7143/api/Features");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
+				return View(values);
+			}
+			return View();
+		}
+
+		//[HttpPost]
+		//[Route("CreateFeatureByCarId")]
+		//public async Task<IActionResult> CreateFeatureByCarId(List<CreateCarFeatureByCarIdDto> createCarFeatureByCarIdDto)
+		//{
+		//	var client = _httpClientFactory.CreateClient();
+		//	var jsonData = JsonConvert.SerializeObject(createCarFeatureByCarIdDto);
+		//	StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+		//	var respnseMessage = await client.PostAsync("https://localhost:7143/api/CarFeatures", stringContent);
+		//	if (respnseMessage.IsSuccessStatusCode)
+		//	{
+		//		return RedirectToAction("Index");
+		//	}
+		//	else
+		//	{
+		//		return View();
+		//	}
+		//}
 
 	}
 }
