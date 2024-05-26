@@ -28,5 +28,14 @@ namespace CarBook.WebUI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> CarDetail(int id)
+        {
+			ViewBag.v1 = "Araçlarımız";
+			ViewBag.v2 = "Aranıcızı Seçininiz";
+            ViewBag.carId = id;
+
+            return View();
+		}
     }
 }
