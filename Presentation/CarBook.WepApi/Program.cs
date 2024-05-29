@@ -28,9 +28,26 @@ using CarBook.Persistence.Repositories.RentACarRepositories;
 using CarBook.Persistence.Repositories.ReviewRepositories;
 using CarBook.Persistence.Repositories.StatisticRepositories;
 using CarBook.Persistence.Repositories.TagCloudRepositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using CreateBannerCommandHandler = CarBook.Application.Features.CQRS.Handlers.BannerHandlers.CreateBannerCommandHandler;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;  //  token alýrken HTTPS kullanýmýnýn gerekip gerekmediðini belirtir
+	opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidAudience = "https://localhost", 
+        ValidIssuer = "https://localhost",
+        ClockSkew = TimeSpan.Zero,  // Tokenýn geçerlilik süresi kontrolünde kullanýlacak saat kaymasýný belirtir. zero yaptýðýmýzda kayma sýfýr olur
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("carbookcarbook01")),  // Tokený imzalayan anahtarý belirtir. Bu, tokenýn imzasýnýn doðrulanmasý için kullanýlýr
+		ValidateLifetime = true,  // Tokenýn ömrünü doðrulayýp doðrulamayacaðýný belirtir
+		ValidateIssuerSigningKey = true  // Tokenýn imzasýnýn doðrulanýp doðrulanmayacaðýný belirtir
+	};
+});
 
 // Add services to the container.
 builder.Services.AddScoped<CarBookContext>();
