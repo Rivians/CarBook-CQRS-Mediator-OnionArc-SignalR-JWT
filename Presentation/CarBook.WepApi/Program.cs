@@ -16,6 +16,7 @@ using CarBook.Application.Interfaces.ReviewInterfaces;
 using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Application.Interfaces.TagCloudInterfaces;
 using CarBook.Application.Services;
+using CarBook.Application.Tools;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
 using CarBook.Persistence.Repositories.BlogRepositories;
@@ -40,10 +41,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.RequireHttpsMetadata = false;  //  token alýrken HTTPS kullanýmýnýn gerekip gerekmediðini belirtir
 	opt.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidAudience = "https://localhost", 
-        ValidIssuer = "https://localhost",
+        ValidAudience = JwtTokenDefaults.ValidAudience, 
+        ValidIssuer = JwtTokenDefaults.ValidIssuer,
         ClockSkew = TimeSpan.Zero,  // Tokenýn geçerlilik süresi kontrolünde kullanýlacak saat kaymasýný belirtir. zero yaptýðýmýzda kayma sýfýr olur
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("carbookcarbook01")),  // Tokený imzalayan anahtarý belirtir. Bu, tokenýn imzasýnýn doðrulanmasý için kullanýlýr
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),  // Tokený imzalayan anahtarý belirtir. Bu, tokenýn imzasýnýn doðrulanmasý için kullanýlýr
 		ValidateLifetime = true,  // Tokenýn ömrünü doðrulayýp doðrulamayacaðýný belirtir
 		ValidateIssuerSigningKey = true  // Tokenýn imzasýnýn doðrulanýp doðrulanmayacaðýný belirtir
 	};
@@ -120,6 +121,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
