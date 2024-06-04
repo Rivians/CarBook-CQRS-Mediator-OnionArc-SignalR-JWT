@@ -38,6 +38,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.AppUserHandlers
 				  
 				  üst kısımda zaten GetByFilterAsync ile user'ımızı çektik. Daha sonra bu user'in rolünü de atamak için ilk _appRoleRepository fieldi ile yine GetByFilter metodu uyguluyoruz. Ve expression func kısmında sorgu olarakta user'in appRoleID'sinin bizim veri tabanımızdaki AppRoleID ile uyuşan veriyi çekiyoruz ve values.Role'e atıyoruz. 
 				*/
+
 				values.Role = (await _appRoleRepository.GetByFilterAsync(x => x.AppRoleId == user.AppRoleId)).AppRoleName;
 				values.Id = user.AppUserID;
 			}
