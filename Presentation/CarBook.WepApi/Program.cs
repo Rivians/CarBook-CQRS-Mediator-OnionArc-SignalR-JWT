@@ -29,12 +29,32 @@ using CarBook.Persistence.Repositories.RentACarRepositories;
 using CarBook.Persistence.Repositories.ReviewRepositories;
 using CarBook.Persistence.Repositories.StatisticRepositories;
 using CarBook.Persistence.Repositories.TagCloudRepositories;
+using CarBook.WepApi.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CreateBannerCommandHandler = CarBook.Application.Features.CQRS.Handlers.BannerHandlers.CreateBannerCommandHandler;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpClient();
+
+
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader()               // Yani, istemciden gelen tüm headerlar kabul edilir.
+        .AllowAnyMethod()                      // Herhangi bir HTTP metoduna izin verir (GET, POST, PUT, DELETE vb.).
+        .SetIsOriginAllowed((host) => true)    // Bu, tüm kaynaklardan gelen isteklerin kabul edileceði anlamýna gelir.
+        .AllowCredentials();                   // Kimlik bilgileri (çerezler, baþlýklar, TLS istemci sertifikalarý gibi) ile gelen isteklerin kabul edilmesini saðlar.
+    });
+
+});
+builder.Services.AddSignalR();
+
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
@@ -119,11 +139,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy"); 
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");      // signalR tarafýnda istek yapabilmemizi saðlayacak middleware, ayný zamanda SignalR CarHub'ýnýn eriþilebilir olacaðý URL yolu.
 
 app.Run();
