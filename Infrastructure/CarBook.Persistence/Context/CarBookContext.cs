@@ -18,7 +18,12 @@ namespace CarBook.Persistence.Context
             // J0UOEGM
         }
 
-		public DbSet<AppUser> AppUsers { get; set; }
+        //public CarBookContext(DbContextOptions<CarBookContext> options) : base(options)
+        //{
+            
+        //}
+
+        public DbSet<AppUser> AppUsers { get; set; }
 		public DbSet<AppRole> AppRoles { get; set; }
 		public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
